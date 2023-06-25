@@ -6,7 +6,7 @@ import { useStore } from '../store.js';
 const Column = ({state}) => {
 
     const tasks = useStore((store) => store.tasks.filter((task) => task.state === state));
-
+    console.log(tasks);
     return (
         <div className='column'>
             <p>{state}</p>
