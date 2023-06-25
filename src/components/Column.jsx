@@ -1,18 +1,16 @@
 import './Column.css';
 import Task from './Task';
-import { myStore } from '../store.js';
-import { useMemo } from 'react';
+import { useStore } from '../store.js';
+
 
 const Column = ({state}) => {
 
-    const tasks = myStore((store) => store.tasks);
-
-    const filtered  = useMemo(() => tasks.filter((task) => task.state === state))
+    const tasks = useStore((store) => store.tasks.filter((task) => task.state === state));
 
     return (
         <div className='column'>
             <p>{state}</p>
-            <Task title='Todo'/>
+            {tasks.map((task, i) => <Task title={task.title} key={task.title + i} />)}
         </div>
     )
 }
