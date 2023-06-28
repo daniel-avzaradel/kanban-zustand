@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 0.25rem 0;
+    cursor: move;
 }
 
 .bottomWrapper {
@@ -15,10 +16,26 @@
     justify-content: space-between;
 }
 
+.bottomWrapper div button {
+    background-color: rgb(209, 64, 64);
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bottomWrapper div button:hover {
+    background-color: firebrick;
+    color: white;
+
+}
+
 .status {
     font-size: small;
     background: var(--COLOR-GRAY-LIGHT);
-    padding: 0.25rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
 }
 

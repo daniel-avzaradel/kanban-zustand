@@ -11,6 +11,8 @@ const Column = ({ state }) => {
     store.tasks.filter((task) => task.state === state)
   );
   const addTask = useStore((store) => store.addTask);
+  const setDraggedTask = useStore((store) => store.setDraggedTask);
+  const draggedTask = useStore((store) => store.draggedTask);
 
   const submit = () => {
     addTask(text, state);
@@ -18,10 +20,17 @@ const Column = ({ state }) => {
     setOpen(false);
   };
 
-const keypress = (e) => e.key === 'Enter' && submit()
+  const keypress = (e) => e.key === "Enter" && submit();
 
   return (
-    <div className="column">
+    <div
+      className="column"
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={(e) => {
+        console.log(draggedTask);
+        setDraggedTask(null);
+      }}
+    >
       <div className="titleWrapper">
         <p>{state}</p>
         <button onClick={() => setOpen(true)}>Add</button>
