@@ -5,6 +5,7 @@ const store = (set) => ({
     { title: "TaskTest", state: "PLANNED" },
     { title: "TaskTest2", state: "ONGOING" },
     { title: "TaskTest3", state: "PLANNED" },
+    { title: "TaskTest4", state: "PLANNED" },
   ],
   draggedTask: null,
   addTask: (title, state) =>
@@ -14,7 +15,12 @@ const store = (set) => ({
       tasks: store.tasks.filter((task) => task.title !== title),
     })),
   setDraggedTask: (title) => set({ draggedTask: title }),
-  moveTask: (title, state) => set(store => ({tasks: store.tasks.map(task => task.title === title ? {title, state} : task)}))
+  moveTask: (title, state) =>
+    set((store) => ({
+      tasks: store.tasks.map((task) =>
+        task.title === title ? { title, state } : task
+      ),
+    })),
 });
 
 export const useStore = create(store);
