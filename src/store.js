@@ -27,7 +27,7 @@ const store = (set) => ({
     }), false, "moveTask"),
 });
 
-const log = (config) => (set, get, api) => config(
+const log = (config) => (get, set, api) => config(
   (...args) => {
     console.log(...args);
     set(...args)
