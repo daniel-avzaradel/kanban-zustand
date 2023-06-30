@@ -37,7 +37,6 @@ const Column = ({ state }) => {
         e.preventDefault();
       }}
       onDrop={(e) => {
-        console.log(draggedTask);
         moveTask(draggedTask, state);
         setDraggedTask(null);
         setDrop(false);
