@@ -5,3 +5,12 @@
   justify-content: center;
   align-items: start;
 }
+
+.AppContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--COLOR-GRAY);
+  color: var(--COLOR-GRAY-LIGHT);
+  padding: 1rem;
+}
