@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from 'zustand/middleware'
 
 const store = (set) => ({
-  tasks: [{task: 'testPlanned', state: 'PLANNED'}],
+  tasks: [{title: 'test', state: 'DONE'}],
   draggedTask: null,
   addTask: (title, state) =>
     set(
@@ -18,22 +18,27 @@ const store = (set) => ({
       false,
       "deleteTask"
     ),
-  setDraggedTask: (title) => set({ draggedTask: title }, false, "setDraggedTask"),
+  setDraggedTask: (title) =>
+    set({ draggedTask: title }, false, "setDraggedTask"),
   moveTask: (title, state) =>
-    set((store) => ({
-      tasks: store.tasks.map((task) =>
-        task.title === title ? { title, state } : task
-      ),
-    }), false, "moveTask"),
+    set(
+      (store) => ({
+        tasks: store.tasks.map((task) =>
+          task.title === title ? { title, state } : task
+        ),
+      }),
+      false,
+      "moveTask"
+    ),
 });
 
-const log = (config) => (get, set, api) => config(
-  (...args) => {
-    console.log(...args);
-    set(...args)
-  },
-  get,
-  api
-);
+const log = (config) => (get, set, api) =>
+  config(
+    get,
+    (...args) => {
+      set(...args);
+    },
+    api
+  );
 
 export const useStore = create(log(persist(devtools(store), { name: "store" })));

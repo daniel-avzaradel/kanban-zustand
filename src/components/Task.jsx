@@ -2,8 +2,6 @@ import { useStore } from "../store";
 import "./Task.css";
 import classNames from "classnames";
 
-const STATUS = "PLANNED";
-
 export default function Task({ title }) {
   const task = useStore((store) =>
     store.tasks.find((task) => task.title === title)

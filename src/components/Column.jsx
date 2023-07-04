@@ -2,6 +2,7 @@ import "./Column.css";
 import Task from "./Task";
 import { useStore } from "../store.js";
 import { useState } from "react";
+import { shallow } from "zustand/shallow";
 import classNames from "classnames";
 
 const Column = ({ state }) => {
@@ -9,8 +10,8 @@ const Column = ({ state }) => {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
 
-  const tasks = useStore((store) =>
-    store.tasks.filter((task) => task.state === state)
+  const tasks = useStore((store) => 
+    store.tasks.filter((task) => task.state === state), shallow
   );
   const addTask = useStore((store) => store.addTask);
   const setDraggedTask = useStore((store) => store.setDraggedTask);

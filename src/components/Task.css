@@ -11,6 +11,10 @@
     cursor: move;
 }
 
+.task div {
+    text-align: left;
+}
+
 .bottomWrapper {
     display: flex;
     justify-content: space-between;
