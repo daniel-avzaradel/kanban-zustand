@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from 'zustand/middleware'
 
 const store = (set) => ({
-  tasks: [{title: 'test', state: 'DONE'}],
+  tasks: [],
   draggedTask: null,
   addTask: (title, state) =>
     set(
@@ -32,12 +32,13 @@ const store = (set) => ({
     ),
 });
 
-const log = (config) => (get, set, api) =>
+const log = (config) => (set, get, api) =>
   config(
-    get,
     (...args) => {
+      console.log(args);
       set(...args);
     },
+    get,
     api
   );
 
