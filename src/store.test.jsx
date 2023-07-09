@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useStore } from "./store";
+import { render } from "@testing-library/react";
+import { vi } from "vitest";
 
 function TestComponent({selector, effect}) {
     const items = useStore(selector);
@@ -7,6 +9,10 @@ function TestComponent({selector, effect}) {
     return null
 }
 
-test("sample", () => {
-  expect(1).toEqual(1);
-});
+test("should return default value at the start", () => {
+    const selector = (store) => store.tasks;
+    const effect = vi.fn();
+
+    render(<TestComponent selector={selector} effect={effect} />)
+    expect(effect).toHaveBeenCalledWith([])
+})
