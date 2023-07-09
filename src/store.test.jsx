@@ -18,10 +18,14 @@ test("should return default value at the start", () => {
 });
 
 test("should add an item to the store and return the effect", () => {
-    const selector = (store) => ({tasks: store.tasks, addTask: store.addTask});
+    const selector = (store) => ({tasks: store.tasks, addTask: store.addTask, deleteTask: store.deleteTask});
+    let createdTask = false
     const effect = vi.fn().mockImplementation((items) => {
         if(items.tasks.length === 0) {
-            items.addTask('a', 'b')
+            items.addTask('a', 'b');
+            createdTask = true
+        } else if(items.tasks.length === 1) {
+            items.deleteTask('a')
         }
     });
 
