@@ -17,5 +17,5 @@ export const create = (createState) => {
 
 // Reset all stores after each test run
 beforeEach(() => {
-    act(() => storeResetFns((resetFn) => resetFn()))
+    act(() => storeResetFns.forEach((resetFn) => resetFn()))
 });
