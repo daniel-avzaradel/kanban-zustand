@@ -14,3 +14,32 @@
   color: var(--COLOR-GRAY-LIGHT);
   padding: 1.2rem;
 }
+
+.AppContainer h2 {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #725bc5 0%,
+    #5b0caf 19%,
+    #ff1361 57%,
+    #fff800 65%,
+    #ff1361 75%,
+    #7935c2 100%
+    );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 2rem;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
